@@ -1,0 +1,48 @@
+.form-box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: .5rem 0rem;
+}
+.error-msg{
+    color: red;
+}
+.footer{
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+}
+.cancel{
+    background:#dc3545;
+    color: #fff;
+}
+.save{
+    background: #28a745;
+    color: #fff;
+}
+.add-product{
+    margin: .5rem 0rem;
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+}
+.edit{
+    background: #007bff;
+    margin-right: .5rem;
+}
+.chart-container{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .table-header{
+   background: #5f4e7f;
+  }
+  .sectio-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }

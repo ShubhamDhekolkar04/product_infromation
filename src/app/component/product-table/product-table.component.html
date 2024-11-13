@@ -1,0 +1,74 @@
+<div class="table-container">
+<div class="add-product">
+  <button  *ngIf="shograph!=true" pButton (click)="openProductModal()">Add Product</button>
+  <button  *ngIf="shograph==true" pButton (click)="openTablemodal()">Back To Table</button>
+  <button   *ngIf="shograph!=true" pButton (click)="openGraph()">Show Graph</button>
+</div>
+<div *ngIf="shograph==true;then hideTable else openTable"></div>
+<ng-template #hideTable>
+  <h2 class="sectio-header">Graph Section</h2>
+  <div class="chart-container">
+    <app-product-chart></app-product-chart>
+  </div>
+</ng-template>
+<ng-template #openTable>
+  <h2 class="sectio-header">Product Information Table </h2>
+  <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct">
+    <ng-template pTemplate="header">
+      <tr class="table-header">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <button pButton class="edit" (click)="editProduct(product)" icon="pi pi-pencil">Edit</button>
+          <button pButton  class="cancel" (click)="deleteProduct(product)" icon="pi pi-trash">Delete</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-template>
+
+  
+  
+  <p-dialog [(visible)]="productModal" header="Product Details" [modal]="true">
+    <form [formGroup]="productForm">
+      <div class="form-box">
+        <div>Name</div>
+        <input pInputText formControlName="name" />
+        <small class="error-msg" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+          Name is required and must be at least 3 characters long.
+        </small>
+      </div>
+      <div class="form-box">
+        <div>Price</div>
+        <input pInputText formControlName="price"  type="number" />
+        <small class="error-msg" *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+          Price is required and must be greater than 0.
+        </small>
+      </div>
+      <div class="form-box">
+        <div>Category</div>
+        <input pInputText  formControlName="category" />
+        <small class="error-msg" *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
+          Category is required.
+        </small>
+      </div>
+    </form>
+    <p-footer>
+      <div class="footer">
+        <button class="cancel" pButton (click)="cancel()">Cancel</button>
+        <button class="save" pButton (click)="saveProductInformation()" [disabled]="productForm.invalid">Save</button>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

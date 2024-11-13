@@ -1,0 +1,24 @@
+/* app.component.css */
+.web-container{
+  height: 100vh;
+  width: 100%;
+  background: #ebebeb;
+  overflow: hidden;
+}
+.header{
+  height: 8vh;
+  width: 100%;
+}
+
+.table-container{
+  height: 92vh;
+  width: 100%;
+}
+.p-grid {
+    // display: flex;
+  }
+  .p-col {
+    flex: 1;
+    margin: 10px;
+  }
+  
